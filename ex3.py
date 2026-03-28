@@ -95,6 +95,10 @@ def run_houses_analysis():
     data = data.dropna()
     print("После очистки:", data.shape)
 
+    # Цена исключена из признаков PCA: её анализируют отдельно (зависимая / целевая величина).
+    data = data.drop(columns=["price"])
+    print("После исключения price из признаков PCA:", data.shape)
+
     features = data.columns
     print_feature_index(features, "СПИСОК ПРИЗНАКОВ (датасет домов)")
 
@@ -117,9 +121,9 @@ def run_houses_analysis():
 
     plt.figure()
     plt.plot(range(1, len(var_scaled) + 1), var_scaled)
-    plt.xlabel("")
+    plt.xlabel("Количество главных компонент")
     plt.ylabel("Накопленная доля дисперсии")
-    plt.title("Датасет домов: PCA (стандартизированные данные)")
+    plt.title("Датасет домов: PCA без price (стандартизированные данные)")
     plt.grid()
     plt.show()
 
