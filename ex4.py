@@ -1,5 +1,4 @@
 # Лабораторная работа 3.4
-# Наивный Байес: классификация новостных статей
 
 from sklearn.datasets import fetch_20newsgroups
 from sklearn.model_selection import train_test_split
@@ -7,6 +6,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB, BernoulliNB
 from sklearn.metrics import accuracy_score, classification_report
 import numpy as np
+
 
 # 1. Загрузка данных
 data = fetch_20newsgroups(subset='all')
